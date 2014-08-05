@@ -2,7 +2,8 @@ class DiscussionsController < ApplicationController
   def new
     @project = current_user.projects.find(params[:project_id])
     @discussion = @project.discussions.build
-    @discussion.comments.build
+    @comment = @discussion.comments.build
+    @comment.user = current_user
   end
 
   def create
@@ -13,8 +14,9 @@ class DiscussionsController < ApplicationController
 
   def show
     @project = current_user.projects.find(params[:project_id])
-    @discussion = @project.discussions.find(params[:id])
+    @commentable = @discussion = @project.discussions.find(params[:id])
     @comments = @discussion.comments
+    @comment = params[:comment] ||  Comment.new
   end
 
   private

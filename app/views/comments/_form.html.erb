@@ -1,16 +1,20 @@
-<%= form_for([@project, @task, @comment]) do |f| %>
-  <%= render 'layouts/errors', target: @comment %>
+<%= form_for([@project, @commentable, @comment]) do |f| %>
+
+  <%= f.hidden_field :commentable_type, :value => @commentable.class.model_name %>
+  <%= f.hidden_field :commentable_id, :value => @commentable.id %>
 
   <div class="form-group">
-    <%= f.label :comment, 'Comment' %>
-    <%= f.text_area :comment, :class => 'form-control', :rows => 5 %>
+    <%= f.label :comment, "Comment" %>
+    <%= f.text_area :comment, :class => "form-control", :rows => 5 %>
   </div>
 
   <hr />
 
   <div class="form-group">
-    <%= f.submit :class => 'btn btn-primary' %>
-    <%= link_to "Close", project_task_completions_path(@project, @task),
-      :method => :post %>
+    <%= f.submit :class => "btn btn-primary" %>
+    <% if current_page?(:controller => "tasks", :action => "show") %>
+      <%= link_to "Close", project_task_completions_path(@project, @task),
+        :method => :post %>
+    <% end %>
   </div>
 <% end %>

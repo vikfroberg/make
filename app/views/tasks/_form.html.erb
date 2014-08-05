@@ -1,6 +1,4 @@
 <%= form_for [@project, @task] do |f| %>
-  <%= render 'layouts/errors', target: @task %>
-
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, autofocus: 'autofocus', class: 'form-control' %>

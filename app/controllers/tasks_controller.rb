@@ -28,7 +28,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = @project.tasks.find(params[:id])
+    @commentable = @task = @project.tasks.find(params[:id])
+    @comments = @task.comments
     @comment = params[:comment] ||  Comment.new
   end
 

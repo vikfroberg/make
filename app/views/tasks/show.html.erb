@@ -22,7 +22,9 @@
 <div class="col-md-8">
   <div>
     <% if @task.description? %>
-      <%= markdown(@task.description) %>
+      <p>
+        <%= @task.description %>
+      </p>
       <br>
     <% end %>
   </div>
@@ -33,7 +35,7 @@
     </div>
     <div class="panel-body">
       <ol class="list-unstyled" id="comments">
-        <%= render @task.comments %>
+        <%= render @comments %>
       </ol>
       <%= render 'comments/form' %>
     </div>

@@ -4,38 +4,39 @@ class CommentsController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    @task = @project.tasks.find(params[:task_id])
-    @comment = @task.comments.build(comment_params)
+    puts params.inspect
+    @commentable = find_commentable
+    @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
 
-    if @comment.save
-      redirect_to project_task_path(@project, @task)
-    else
-      render 'tasks/show'
-    end
+    @comment.save!
+    redirect_to polymorphic_path([@project, @commentable])
   end
 
   def edit
     @project = Project.find(params[:project_id])
-    @task = @project.tasks.find(params[:task_id])
-    @comment = @task.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
+    @commentable = @comment.commentable
   end
 
   def update
     @project = Project.find(params[:project_id])
-    @task = @project.tasks.find(params[:task_id])
-    @comment = @task.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
+    @commentable = @comment.commentable
 
-    if @comment.update(comment_params)
-      redirect_to project_task_path(@project, @task)
-    else
-      render 'edit'
-    end
+    @comment.update!(comment_params)
+    redirect_to polymorphic_path([@project, @commentable])
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:comment, :title)
+    params.require(:comment).permit(:comment, :title, :commentable_type, :commentable_id)
+  end
+
+  def find_commentable
+    comment = params[:comment]
+    klass = comment[:commentable_type].capitalize.constantize
+    klass.find(comment[:commentable_id])
   end
 end

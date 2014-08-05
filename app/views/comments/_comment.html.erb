@@ -1,9 +1,9 @@
-<li>
+<li class="comment">
   <p>
     <strong><%= time_ago_in_words(comment.created_at) %> ago</strong>
     <%= link_to(
       'Edit',
-      edit_project_task_comment_path(@project, @task, comment),
+      edit_polymorphic_path([@project, @commentable, comment]),
       :class => 'text-muted'
     ) %>
   </p>

@@ -1,5 +1,6 @@
 <%= form_for(@user, :url => session_path(@user)) do |f| %>
   <%= render 'layouts/flash' %>
+  <%= render 'layouts/errors', target: @user %>
 
   <div class="form-group">
     <%= f.label :email %>

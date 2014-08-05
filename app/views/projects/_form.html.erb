@@ -1,7 +1,4 @@
 <%= form_for @project do |f| %>
-
-  <%= render 'layouts/errors', target: @project %>
-
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: 'autofocus', class: 'form-control' %>

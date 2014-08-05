@@ -22,7 +22,7 @@ feature "Discussions" do
     click_button "Start discussion"
 
     expect(current_path).to match(/discussions\/[0-9]+$/)
-    expect(page).to have_css(".page-title", :text => "Can't change password")
+    expect(page).to have_css("h1", :text => "Can't change password")
     expect(page).not_to have_css(".comment")
   end
 
@@ -36,7 +36,7 @@ feature "Discussions" do
     click_button "Start discussion"
 
     expect(current_path).to match(/discussions\/[0-9]+$/)
-    expect(page).to have_css(".page-title", :text => "Can't change password")
+    expect(page).to have_css("h1", :text => "Can't change password")
     expect(page).to have_css(".comment", :text => "Password stays the same")
   end
 

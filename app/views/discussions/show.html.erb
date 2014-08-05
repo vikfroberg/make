@@ -1,4 +1,20 @@
-<h1 class="page-title"><%= @discussion.title %></h1>
-<% @comments.each do |comment| %>
-  <p class="comment"><%= comment.comment %></p>
-<% end %>
+<div class="col-md-12">
+  <div class="page-header">
+    <h1>
+      <%= title(@discussion.title) %>
+    </h1>
+  </div>
+</div>
+<div class="col-md-8">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Comments</h3>
+    </div>
+    <div class="panel-body">
+      <ol class="list-unstyled" id="comments">
+        <%= render @comments %>
+      </ol>
+      <%= render 'comments/form' %>
+    </div>
+  </div>
+</div>
