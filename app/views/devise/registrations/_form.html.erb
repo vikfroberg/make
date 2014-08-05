@@ -1,0 +1,30 @@
+<%= form_for(@user, :url => registration_path(@user)) do |f| %>
+
+  <%= render 'layouts/errors', target: @user %>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, :autofocus => true, class: 'form-control'  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+
+  <% if current_page?(action: 'edit') %>
+    <div class="form-group">
+      <%= f.label :current_password %>
+      <%= f.password_field :current_password, class: 'form-control' %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <% if current_page?(action: 'edit') %>
+      <%= f.submit 'Update Account', :class => 'btn btn-primary' %>
+    <% else %>
+      <%= f.submit 'Sign up', :class => 'btn btn-primary' %>
+    <% end %>
+  </div>
+
+<% end %>

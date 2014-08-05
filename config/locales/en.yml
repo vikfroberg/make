@@ -1,0 +1,12 @@
+en:
+  helpers:
+    submit:
+      update: "Save changes"
+      comment:
+        create: "Comment"
+      task:
+        create: "Add task"
+      project:
+        create: "Add project"
+
+

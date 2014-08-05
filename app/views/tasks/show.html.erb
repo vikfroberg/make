@@ -1,0 +1,74 @@
+<div class="col-md-12">
+  <div class="page-header">
+    <div class="pull-right">
+      <%= link_to_new(title_for_new_action, :class => 'btn btn-default') %>
+    </div>
+
+    <h1>
+      <%= title(@task.title) %>
+      <small><%= link_to_edit('Edit', :class => 'text-muted') %></small>
+    </h1>
+
+    <p>
+      <% if @task.completed_at? %>
+        <span class="label label-danger">Closed</span>
+      <% else %>
+        <span class="label label-success">Open</span>
+      <% end %>
+      <%= linked_tag_list(@task.tags) %>
+    </p>
+  </div>
+</div>
+<div class="col-md-8">
+  <div>
+    <% if @task.description? %>
+      <%= markdown(@task.description) %>
+      <br>
+    <% end %>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Comments</h3>
+    </div>
+    <div class="panel-body">
+      <ol class="list-unstyled" id="comments">
+        <%= render @task.comments %>
+      </ol>
+      <%= render 'comments/form' %>
+    </div>
+  </div>
+</div>
+<div class="col-md-4 pull-right">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Todos</h3>
+    </div>
+    <div class="panel-body">
+      <% if @task.todos.incompleted.empty? %>
+          <p class="text-muted">There are no todos for this task</p>
+        <% end %>
+        <ul id="todos" class="list-unstyled">
+          <% @task.todos.incompleted.each do |todo| %>
+            <li class="todo-incompleted">
+              <%= link_to project_task_todo_completions_path(@project, @task,
+                todo), :class => 'todo-complete', :method => :post,
+                :style => 'text-decoration: none;' do %>
+                <input type="checkbox" id="todo_complete">
+              <% end %>
+              <%= todo.content %>
+            </li>
+          <% end %>
+        </ul>
+        <%= form_for([@project, @task, @task.todos.build]) do |f| %>
+          <div class="form-group">
+            <%= f.text_field :content, :class => 'form-control input-sm',
+             :placeholder => 'Browser test' %>
+          </div>
+          <div class="form-group">
+              <%= f.submit 'Add todo', :class => 'btn btn-primary btn-sm' %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<h1 class="page-title"><%= @discussion.title %></h1>
+<% @comments.each do |comment| %>
+  <p class="comment"><%= comment.comment %></p>
+<% end %>

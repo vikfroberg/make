@@ -1,0 +1,16 @@
+<%= form_for([@project, @task, @comment]) do |f| %>
+  <%= render 'layouts/errors', target: @comment %>
+
+  <div class="form-group">
+    <%= f.label :comment, 'Comment' %>
+    <%= f.text_area :comment, :class => 'form-control', :rows => 5 %>
+  </div>
+
+  <hr />
+
+  <div class="form-group">
+    <%= f.submit :class => 'btn btn-primary' %>
+    <%= link_to "Close", project_task_completions_path(@project, @task),
+      :method => :post %>
+  </div>
+<% end %>

@@ -1,0 +1,41 @@
+<div class="col-md-12">
+  <div class="page-header">
+    <div class="pull-right">
+      <%= link_to "Start a new discussion",
+        new_project_discussion_path(@project),
+        :class => 'btn btn-success'
+      %>
+      <%= link_to title_for_new_action,
+        new_project_task_path(@project),
+        :class => 'btn btn-default'
+      %>
+    </div>
+    <h1 class="page-title"><%= title('Tasks') %></h1>
+  </div>
+</div>
+<div class="col-md-8">
+  <ol class="list-unstyled">
+    <% @tasks.each do |task| %>
+      <li class="task-item">
+        <h4><%= link_to task.title, project_task_path(@project, task) %></h4>
+        <p><%= linked_tag_list(task.tags) %></p>
+        <hr />
+      </li>
+    <% end %>
+  </ol>
+</div>
+<div class="col-md-3 pull-right">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+    <ul class="list-group">
+      <% @tags.each do |tag| %>
+        <li class="list-group-item">
+          <%= link_to tag.name,
+            project_tasks_path(@project, :tag => tag.name) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

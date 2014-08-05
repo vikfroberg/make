@@ -1,0 +1,21 @@
+<div class="col-md-12">
+  <div class="page-header">
+    <%= link_to title_for_new_action, new_project_path,
+      :class => 'btn btn-primary pull-right' %>
+    <h1 class="page-title">Projects</h1>
+  </div>
+</div>
+<div class="col-md-8">
+  <ol class="list-unstyled">
+    <% @projects.each do |project| %>
+      <li>
+        <%= link_to 'Edit', edit_project_path(project),
+          :class => 'pull-right text-muted' %>
+        <h4>
+          <%= link_to project.name, project_tasks_path(project) %>
+        </h4>
+        <hr />
+      </li>
+    <% end %>
+  </ol>
+</div>

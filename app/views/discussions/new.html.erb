@@ -1,0 +1,17 @@
+<%= form_for [@project, @discussion] do |discussion_form| %>
+  <div class="form-group">
+    <%= discussion_form.label :title %>
+    <%= discussion_form.text_field :title, autofocus: 'autofocus', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= discussion_form.fields_for :comments do |comment_form| %>
+      <%= comment_form.label :comment, "Details" %>
+      <%= comment_form.text_area :comment, class: 'form-control', rows: 6 %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= discussion_form.submit "Start discussion", :class => 'btn btn-success' %>
+  </div>
+<% end %>

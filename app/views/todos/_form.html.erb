@@ -1,0 +1,15 @@
+<%= form_for([@project, @task, @todo]) do |f| %>
+  <%= render 'layouts/errors', target: @todo %>
+
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_field :content, :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Save changes', :class => 'btn btn-primary' %>
+    or
+    <%= link_to 'Cancel', project_task_path(@project, @task),
+      :class => 'text-muted' %>
+  </div>
+<% end %>

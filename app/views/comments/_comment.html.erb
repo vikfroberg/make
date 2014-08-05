@@ -1,0 +1,12 @@
+<li>
+  <p>
+    <strong><%= time_ago_in_words(comment.created_at) %> ago</strong>
+    <%= link_to(
+      'Edit',
+      edit_project_task_comment_path(@project, @task, comment),
+      :class => 'text-muted'
+    ) %>
+  </p>
+  <%= comment.comment %>
+  <br>
+</li>
