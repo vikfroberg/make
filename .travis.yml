@@ -1,0 +1,8 @@
+language: ruby
+bundler_args: "--without development production"
+rvm:
+- 2.1.1
+addons:
+  postgresql: "9.3"
+  code_climate:
+    repo_token: 4f35b99e32fb005e35cb43bc0bf333836bee2d09908a1da37a35ea3cdcb1d04c

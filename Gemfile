@@ -13,10 +13,12 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'simplecov'
 gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
+gem 'foreman'
 
 group :test do
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'codeclimate-test-reporter'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
