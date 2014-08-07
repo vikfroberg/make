@@ -34,7 +34,7 @@ feature "Manages tasks" do
     user_sees_task_in_list "Buy milk"
 
     click_link "Buy milk"
-    click_link "Edit"
+    click_link edit_task_title
     accept_confirm "Are you sure?" do
       click_link "Delete"
     end

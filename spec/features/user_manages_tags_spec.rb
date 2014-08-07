@@ -33,7 +33,7 @@ feature 'User manages tags' do
     fill_in 'Tags', :with => 'promoted, code'
     click_button 'Add task'
 
-    click_link 'Edit'
+    click_link edit_task_title
     fill_in 'Tags', :with => 'promoted'
     click_button 'Save changes'
 
@@ -44,7 +44,7 @@ feature 'User manages tags' do
     sign_in
     create_project "Shopping"
     click_link "Shopping"
-    click_link "Add new task"
+    click_link new_task_title
     fill_in "Title", :with => "Buy milk"
     fill_in "Tags", :with => "important"
     click_button "Add task"

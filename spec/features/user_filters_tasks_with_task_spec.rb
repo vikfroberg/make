@@ -6,7 +6,7 @@ feature 'User filters tasks with tag' do
     create_project "Shopping"
     click_link "Shopping"
     create_task "Buy milk"
-    click_link "Add new task"
+    click_link new_task_title
     fill_in "Title", :with => "Buy candy"
     fill_in "Tags", :with => "important"
     click_button "Add task"
@@ -27,11 +27,11 @@ feature 'User filters tasks with tag' do
     sign_in
     create_project "Shopping"
     click_link "Shopping"
-    click_link "Add new task"
+    click_link new_task_title
     fill_in "Title", :with => "Buy milk"
     fill_in "Tags", :with => "important"
     click_button "Add task"
-    click_link "Add new task"
+    click_link new_task_title
     fill_in "Title", :with => "Buy candy"
     fill_in "Tags", :with => "important"
     click_button "Add task"

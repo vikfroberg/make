@@ -1,12 +1,16 @@
 <div class="col-md-12">
   <div class="page-header">
     <div class="pull-right">
-      <%= link_to_new(title_for_new_action, :class => 'btn btn-default') %>
+      <%= link_to(new_task_title, new_project_task_path(@project),
+        :class => 'btn btn-default') %>
     </div>
 
     <h1>
       <%= title(@task.title) %>
-      <small><%= link_to_edit('Edit', :class => 'text-muted') %></small>
+      <small>
+        <%= link_to(edit_task_title, edit_project_task_path(@project, @task),
+          :class => 'text-muted') %>
+      </small>
     </h1>
 
     <p>

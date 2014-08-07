@@ -11,6 +11,10 @@ module SessionSteps
     fill_in "Password", :with => password
     click_button "Sign in"
   end
+
+  def sign_in_as(user)
+    login_as(user, scope: :user)
+  end
 end
 
 RSpec.configure do |config|

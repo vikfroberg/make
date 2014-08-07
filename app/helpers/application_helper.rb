@@ -4,16 +4,6 @@ module ApplicationHelper
     title
   end
 
-  def title_for_new_action
-    model_name = params[:controller].singularize
-    "Add new #{model_name}"
-  end
-
-  def title_for_edit_action
-    model_name = params[:controller].singularize
-    "Edit #{model_name}"
-  end
-
   def flash_class(level)
     case level.to_sym
       when :notice then "alert alert-info"

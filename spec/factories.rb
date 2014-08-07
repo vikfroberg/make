@@ -12,4 +12,8 @@ FactoryGirl.define do
 
 	factory :todo do
 	end
+
+	factory :discussion do
+		sequence(:title) { |n| "Example title #{n}" }
+	end
 end

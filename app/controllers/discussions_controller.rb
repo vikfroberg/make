@@ -1,4 +1,9 @@
 class DiscussionsController < ApplicationController
+  def index
+    @project = current_user.projects.find(params[:project_id])
+    @discussions = @project.discussions
+  end
+
   def new
     @project = current_user.projects.find(params[:project_id])
     @discussion = @project.discussions.build

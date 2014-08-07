@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :projects, only: [:index, :new, :create, :edit, :update] do
-    resources :discussions, only: [:new, :create, :show] do
+    resources :discussions, only: [:new, :create, :show, :index] do
       resources :comments, only: [:create, :edit, :update]
     end
     resources :tasks, only: [:index, :new, :create, :edit, :update, :show, :destroy] do
