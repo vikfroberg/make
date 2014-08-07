@@ -18,7 +18,6 @@
     <% @tasks.each do |task| %>
       <li class="task-item">
         <h4><%= link_to task.title, project_task_path(@project, task) %></h4>
-        <p><%= linked_tag_list(task.tags) %></p>
         <hr />
       </li>
     <% end %>

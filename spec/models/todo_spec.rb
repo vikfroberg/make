@@ -33,18 +33,4 @@ describe Todo do
       expect(Todo.incompleted).to eq [todos[2], todos[0]]
     end
   end
-
-  describe ".completed" do
-    it "returns completed todos ordered by completed at" do
-      pending "Not needed yet"
-      todos = []
-      4.times { |n| todos << Todo.create! }
-
-      todos[0].complete
-      todos[2].complete
-      todos[1].complete
-
-      expect(Todo.completed).to eq [todos[1], todos[2], todos[0]]
-    end
-  end
 end

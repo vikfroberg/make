@@ -36,13 +36,4 @@ describe ApplicationHelper do
       expect(helper.flash_class("alert")).to eq("alert alert-warning")
     end
   end
-
-  describe "#markdown_annotation" do
-    it "returns a string on how to find out more about markdown" do
-      pending "not needed now"
-      link = link_to 'Markdown',
-            'https://guides.github.com/features/mastering-markdown'
-      expect(helper.markdown_annotation).to eq("Format text with #{link}.")
-    end
-  end
 end

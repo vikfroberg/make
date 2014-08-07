@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    puts params.inspect
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user

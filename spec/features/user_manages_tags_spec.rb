@@ -61,18 +61,4 @@ feature 'User manages tags' do
 
     expect(page).not_to have_css(".list-group", :text => "important")
   end
-
-  scenario "sees tags from task list" do
-    sign_in
-    create_project "Shopping"
-    click_link "Shopping"
-    click_link "Add new task"
-    fill_in "Title", :with => "Buy milk"
-    fill_in "Tags", :with => "important"
-    click_button "Add task"
-    click_link "Tasks"
-
-    task_item = find(".task-item", :text => "Buy milk")
-    expect(task_item).to have_content("important")
-  end
 end

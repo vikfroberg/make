@@ -31,24 +31,4 @@ feature "User manages task completion" do
 
     expect(page).not_to have_css(".task-item", :text => "Buy milk")
   end
-
-  scenario "sees completion state from task list" do
-    pending "Not needed for now"
-    sign_in
-    create_project "Shopping"
-    click_link "Shopping"
-    create_task "Buy milk"
-    click_link "Tasks"
-
-    task_item = find(".task-item")
-    expect(task_item).to have_content("Open")
-    expect(task_item).not_to have_content("Closed")
-
-    click_link "Buy milk"
-    click_link "Close"
-    click_link "Tasks"
-
-    expect(task_item).to have_content("Closed")
-    expect(task_item).no_to have_content("Open")
-  end
 end
